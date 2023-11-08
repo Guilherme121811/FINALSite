@@ -97,7 +97,7 @@
         body{
             color: #fff;
             font-family: Arial;
-            background: #9C27B0;
+            background: linear-gradient(to bottom, #673AB7, #4FC3F7);;
         }
         a{
             font-size: 20px;
@@ -174,7 +174,7 @@
 y{
     color: orange;
 }
-    </style>
+</style>
 </head>
 <body id="body">
     <div class="tab-container">
@@ -182,6 +182,7 @@ y{
         <div class="tab-label white" onclick="openTab('tab2')"><img class="imgtb" src="tb2.png" alt="tb2" /></div>
         <div class="tab-label white" onclick="openTab('tb3')"><img class="imgtb" src="tb3.png" alt="tb3" /></div>
         <div class="tab-label white" onclick="openTab('tab4')"><img class="imgtb" src="tb4.png" alt="tb4" /></div>
+        <div class="tab-label white" onclick="openTab('tab5')"><img class="imgtb" src="tb5.png" alt="tb5" /></div>
     </div>
 <li></li>
     <div class="tab" id="tab1">
@@ -205,11 +206,15 @@ y{
     </div>
 </div>
 
-    <div class="tab" id="tab4">
+    <div class="tab" id="tab5">
     <h2>Fundo da Atualização</h2>
     <input id="toggle" class="toggle" type="checkbox"/>
     <label for="toggle"></label>
     </div>
+
+<div class="tab" id="tab4">
+    
+</div>
 
     <script>
         // Função para alternar entre as abas
@@ -230,16 +235,21 @@ const version = document.getElementById("h3");
 
 toggle.addEventListener("change", function () {
   if (toggle.checked) {
-    content.style.backgroundColor = "#64B5F6";
+    content.style.backgroundColor = "linear-gradient(to bottom, #BBDEFB, #2196F3);";
     name.style.color = "#1976D2";
     version.style.color = "#1976D2"
   } else {
-    content.style.backgroundColor = "#9C27B0";
+    content.style.backgroundColor = "linear-gradient(to bottom, #673AB7, #4FC3F7);";
     name.style.color = "#4FC3F7";
     version.style.color = "#4FC3F7";
   }
 });
-
+const gradienteElement = document.getElementById("body"); 
+const toggleButton = document.getElementById("toggle"); 
+let isToggled = false; toggleButton.addEventListener("click", function() { if (isToggled) { gradienteElement.style.background = "linear-gradient(to bottom, #673AB7, #4FC3F7)";
+} else { gradienteElement.style.background = "linear-gradient(to bottom, #BBDEFB, #2196F3)"; } 
+isToggled = !isToggled;
+});
     </script>
 </body>
 </html>
