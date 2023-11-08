@@ -98,6 +98,8 @@
             color: #fff;
             font-family: Arial;
             background: linear-gradient(to bottom, #673AB7, #4FC3F7);;
+            width: 50px;
+            height: 75px;
         }
         a{
             font-size: 20px;
@@ -116,6 +118,13 @@
             color: #fff;
             background-color: #8BC34A;
             text-decoration: none;
+        }
+        .title{
+            width: 112px;
+            height: 34px;
+        }
+        .kwami{
+            
         }
         h1{
             color: #BBDEFB;
@@ -201,15 +210,13 @@ y{
 
 <div class="tab" id="tb3">
     <div>
-        <h1>Fluff</h1>
+<img class="title" src="title.png" alt="title" />
+<img class="kwami" src="kwami.png" alt="kwami" />
     <p class="food">Comida: <y>Cenoura</y><img class="foodimg" src="food.png" /></p>
     </div>
 </div>
 
     <div class="tab" id="tab5">
-    <h2>Fundo da Atualização</h2>
-    <input id="toggle" class="toggle" type="checkbox"/>
-    <label for="toggle"></label>
     </div>
 
 <div class="tab" id="tab4">
@@ -228,28 +235,6 @@ y{
 
         // Exibir a primeira aba por padrão
         openTab("tab1");
-        const toggle = document.getElementById("toggle");
-const content = document.getElementById("body");
-const name = document.getElementById("h2");
-const version = document.getElementById("h3");
-
-toggle.addEventListener("change", function () {
-  if (toggle.checked) {
-    content.style.backgroundColor = "linear-gradient(to bottom, #BBDEFB, #2196F3);";
-    name.style.color = "#1976D2";
-    version.style.color = "#1976D2"
-  } else {
-    content.style.backgroundColor = "linear-gradient(to bottom, #673AB7, #4FC3F7);";
-    name.style.color = "#4FC3F7";
-    version.style.color = "#4FC3F7";
-  }
-});
-const gradienteElement = document.getElementById("body"); 
-const toggleButton = document.getElementById("toggle"); 
-let isToggled = false; toggleButton.addEventListener("click", function() { if (isToggled) { gradienteElement.style.background = "linear-gradient(to bottom, #673AB7, #4FC3F7)";
-} else { gradienteElement.style.background = "linear-gradient(to bottom, #BBDEFB, #2196F3)"; } 
-isToggled = !isToggled;
-});
     </script>
 </body>
 </html>
