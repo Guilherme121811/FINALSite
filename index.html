@@ -246,6 +246,46 @@ label{
     border: 2px solid #9E9E9E;
     box-shadow: 0px 6px 0px 0px #212121;
 }
+.mojangles{
+    font-family: "Mojangles";
+}
+.minbold{
+    font-family: "MinecraftBold";
+}
+.minten{
+    font-family: "MinecraftTen";
+}
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #616161;
+    margin: 15% auto;
+    padding: 20px;
+    border: 2px solid #9E9E9E;
+    width: 80%;
+    box-shadow: 0px 6px 0px 0px #212121;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: black;
+}
+
 </style>
 </head>
 <body id="body">
@@ -254,7 +294,8 @@ label{
         <div class="tab-label white" onclick="openTab('tab2')"><img class="imgtb" src="tb2.png" alt="tb2" /></div>
         <div class="tab-label white" onclick="openTab('tb3')"><img class="imgtb" src="tb3.png" alt="tb3" /></div>
         <div class="tab-label white" onclick="openTab('tab4')"><img class="imgtb" src="tb4.png" alt="tb4" /></div>
-        <div class="tab-label white" onclick="openTab('tab5')"><img class="imgtb" src="tb5.png" alt="tb5" /></div>
+        <div class="tab-label white" onclick="openTab('tab5')"><img class="imgtb" src="tb5.png" alt="tab5" /></div>
+        <div class="tab-label white" onclick="openTab('tab6')"><img class="imgtb" src="tb6.png" alt="tb6" /></div>
     </div>
 <li></li>
     <div class="tab" id="tab1">
@@ -266,9 +307,16 @@ label{
     </div>
 
     <div class="tab" id="tab2">
-        <button class="red"><a class="btn yt" href="https://youtube.com/@Miracle-Addon?si=L0muGwkAqYrv_FNs" target="_blank">YouTube</a></button>
-        <li></li>
-<button class="purple"><a class="btn dc" href="https://discord.com/invite/Xy6Ej7Dkrg" target="_blank">Discord</a></button>
+<button class="green" id="openModalBtn">Informações</button>
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModalBtn">&times;</span>
+        <button class="red"id="testBtn1">Youtube</button>
+        <button class="purple"id="testBtn2">Discord</button>
+    </div>
+</div>
+
     </div>
 
 <div class="tab" id="tb3">
@@ -279,7 +327,7 @@ label{
     </div>
 </div>
 
-    <div class="tab" id="tab5">
+    <div class="tab" id="tab6">
     </div>
 
 <div class="tab" id="tab4">
@@ -301,6 +349,9 @@ label{
     <h1>Sliders</h1>
     <div class="sliders">
 <div class="slider-container"> <input type="range" id="slider" min="0" max="100" value="50"> <p id="slider-value">50</p> 
+</div>
+<div class="tab" id="tab5">
+
 </div>
 
     <script>
@@ -332,6 +383,42 @@ function updateSliderValue() {
 
 // Inicialização do valor do slider
 updateSliderValue();
+
+// Referências aos elementos do DOM
+var modal = document.getElementById('myModal');
+var openBtn = document.getElementById('openModalBtn');
+var closeBtn = document.getElementById('closeModalBtn');
+var testBtn1 = document.getElementById('testBtn1');
+var testBtn2 = document.getElementById('testBtn2');
+
+// Função para abrir o modal
+openBtn.onclick = function() {
+    modal.style.display = 'block';
+};
+
+// Função para fechar o modal
+closeBtn.onclick = function() {
+    modal.style.display = 'none';
+};
+
+// Funções de teste
+testBtn1.onclick = function() {
+    // Redirecionar para o Google ao clicar em "Teste 1"
+    window.location.href = 'https://youtube.com/@Miracle-Addon?si=L0muGwkAqYrv_FNs';
+};
+
+testBtn2.onclick = function() {
+    // Redirecionar para o Google ao clicar em "Teste 2"
+    window.location.href = 'https://discord.com/invite/Xy6Ej7Dkrg';
+};
+
+// Fechar o modal se clicar fora da área do conteúdo
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+};
+
     </script>
 </body>
 </html>
