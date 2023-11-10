@@ -55,6 +55,18 @@
     top: 6px;
     box-shadow: none;
 }
+@font-face {
+    font-family: "MinecraftTen";
+    src: url("fonts/minecraft/Minecraft-Normal.ttf");
+}
+@font-face {
+    font-family: "MinecraftBold";
+    src: url("fonts/minecraft/Minecraft-Bold.otf");
+}
+@font-face {
+    font-family: "Mojangles";
+    src: url("fonts/minecraft/Minecraft-Regular.otf");
+}
         /* Estilo para o contêiner das abas */
         .tab-container {
             display: flex;
@@ -70,6 +82,7 @@
             width: 50px;
             height: 50px;
             cursor: pointer;
+            border-radius: 100%;
         }
         /* Estilo para o conteúdo das abas */
         .tab-content {
@@ -88,6 +101,7 @@
             margin-right: 10px;
             width: 150px;
             height: 50px;
+            font-family: "Mojangles";
         }
         .thumb{
             height: 320px;
@@ -97,9 +111,9 @@
         body{
             color: #fff;
             font-family: Arial;
-            background: #4FC3F7;
-            width: 50px;
-            height: 75px;
+            background: linear-gradient(to bottom, #673AB7, #4FC3F7);;
+            width: 50vh;
+            height: 100vh;
         }
         a{
             font-size: 20px;
@@ -120,19 +134,23 @@
             text-decoration: none;
         }
         .title{
-            width: 112px;
-            height: 34px;
+            width: 124px;
+            height: 38px;
+            color: #BBDEFB;
+            text-shadow: 0px 6px 0px #64B5F6;
         }
         .kwami{
-            
+            width: 125px;
+            height: 220px;
         }
         h1{
-            color: #BBDEFB;
+            font-family: "MinecraftTen";
         }
         h2{
             color: #000000;
         }
         p{
+            font-family: "Mojangles";
             color: #4FC3F7;
         }
         pv{
@@ -183,6 +201,51 @@
 y{
     color: orange;
 }
+.h1{
+color: #BBDEFB;
+text-decoration: underline;
+}
+.slider-container {
+    width: 300px; /* Largura do slider retangular */
+    position: relative;
+}
+
+#slider {
+    width: 100%; /* Preenche a largura do slider-container */
+    height: 30px; /* Altura do slider retangular */
+    appearance: none; /* Remove o estilo padrão do slider */
+    background: linear-gradient(to right, #8BC34A 0%, #8BC34A 50%, #607D8B 50%, #607D8B 100%);
+    outline: none;
+    border: none;
+}
+
+#slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 15px; /* Largura do polegar do slider (mesma largura do slider) */
+    height: 30px; /* Altura do polegar do slider (mesma altura do slider) */
+    background: #FAFAFA; /* Cor de fundo do polegar */
+    box-shadow: 0px 3px 0px 0px #BDBDBD;
+    cursor: pointer;
+}
+
+#slider-value {
+    font-family: "Mojangles";
+    font-size: 24px;
+    margin-top: 20px;
+}
+#ore-ui{
+    font-family: "MinecraftBold";
+    color: gray;
+}
+label{
+    font-family: "Mojangles";
+}
+.kwami_tab{
+    width: 150px;
+    background: #616161;
+    border: 2px solid #9E9E9E;
+    box-shadow: 0px 6px 0px 0px #212121;
+}
 </style>
 </head>
 <body id="body">
@@ -196,7 +259,7 @@ y{
 <li></li>
     <div class="tab" id="tab1">
         <img class="thumb" src="img.png" alt="Logo 1">
-        <h1 id="h1">Miraculous Addon</h1>
+        <h1 id="h1" class="h1">Miraculous Addon</h1>
         <p id="h2">Atualização do Coelho</p>
         <p id="h3">V1.0</p>
         <button class="btn green"><a class="dw" href="https://www.mediafire.com/file/7i10hh4g4wy717f/Miracler-Addon_%25C2%25A7bEvolu%25C3%25A7%25C3%25A3o_1699116444172.mcaddon/file">Instalar</a></button>
@@ -209,8 +272,8 @@ y{
     </div>
 
 <div class="tab" id="tb3">
-    <div>
-<img class="title" src="title.png" alt="title" />
+    <div class="kwami_tab">
+        <h1 class="title">Fluff</h1>
 <img class="kwami" src="kwami.png" alt="kwami" />
     <p class="food">Comida: <y>Cenoura</y><img class="foodimg" src="food.png" /></p>
     </div>
@@ -220,7 +283,24 @@ y{
     </div>
 
 <div class="tab" id="tab4">
-    
+    <h1 id="ore-ui">Ore-Ui CSS</h1>
+        <h1>Buttons</h1>
+    <div class="btns">
+    <button class="btn green" id="play">Green</button>
+    <li></li>
+    <button class="btn white" id="play">Normal</button>
+    <li></li>
+    <button class="btn red" id="play">Red</button>
+    <li></li>
+    <button class="btn purple" id="play">Purple</button>
+    </div>
+    <h1>Toggles</h1>
+    <div class="toggles">
+    <input id="toggle" class="toggle" type="checkbox"/>
+    <label for="toggle"></label>
+    <h1>Sliders</h1>
+    <div class="sliders">
+<div class="slider-container"> <input type="range" id="slider" min="0" max="100" value="50"> <p id="slider-value">50</p> 
 </div>
 
     <script>
@@ -235,6 +315,23 @@ y{
 
         // Exibir a primeira aba por padrão
         openTab("tab1");
+        const slider = document.getElementById("slider");
+const sliderValue = document.getElementById("slider-value");
+
+slider.addEventListener("input", updateSliderValue);
+
+function updateSliderValue() {
+    const value = slider.value;
+    sliderValue.innerText = value;
+
+    // Atualize a largura da parte preenchida com base no valor do slider
+    const fillWidth = (value / 100) * slider.clientWidth;
+    slider.style.background = `linear-gradient(to right, #8BC34A 0%, #8BC34A ${fillWidth}px, #607D8B ${fillWidth}px, #607D8B 100%)`;
+    
+}
+
+// Inicialização do valor do slider
+updateSliderValue();
     </script>
 </body>
 </html>
