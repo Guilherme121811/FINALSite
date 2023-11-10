@@ -25,12 +25,8 @@
     top: 6px;
     box-shadow: none;
 }
-.yt{
-    background-color: #F44336;
-    color: #fff;
-}
 .red{
-    color: #000;
+    color: #ffffff;
     background: #F44336;
     box-shadow: 0px 6px 0px 0px #D32F2F;
     border: 2px solid #E57373;
@@ -40,17 +36,24 @@
     top: 6px;
     box-shadow: none;
 }
-.dc{
-    background-color: #673AB7;
-    color: #fff;
-}
 .purple{
-    color: #000;
+    color: #ffffff;
     background: #673AB7;
     box-shadow: 0px 6px 0px 0px #512DA8;
     border: 2px solid #9575CD;
 }
 .purple:active{
+    position: relative;
+    top: 6px;
+    box-shadow: none;
+}
+.gray{
+    color: #ffffff;
+    background: #616161;
+    box-shadow: 0px 6px 0px 0px #212121;
+    border: 2px solid #9E9E9E;
+}
+.gray:active{
     position: relative;
     top: 6px;
     box-shadow: none;
@@ -111,7 +114,7 @@
         body{
             color: #fff;
             font-family: Arial;
-            background: linear-gradient(to bottom, #673AB7, #4FC3F7);;
+            background: linear-gradient(to bottom, #673AB7, #BBDEFB);;
             width: 50vh;
             height: 100vh;
         }
@@ -280,12 +283,62 @@ label{
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
+    font-family: "Mojangles";
+    top: 3px;
+    right: 3px;
 }
 
 .close:hover {
     color: black;
 }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #616161;
+      min-width: 120px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
 
+    .dropdown-content a {
+      color: black;
+      padding: 6px 8px;
+      text-decoration: none;
+      display: block;
+      text-align: center;
+      font-family: "Mojangles";
+    }
+    .show {
+      display: block;
+    }
+
+    .question {
+        font-family: "MinecraftBold";
+      margin-bottom: 20px;
+      color: #lightgray;
+    }
+
+    .options button {
+      margin: 5px;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      font-family: "Mojangles";
+    }
+    #result {
+      margin-top: 10px;
+    }
+
+    #restartButton {
+height: 50px;
+width: 50px;
+      font-size: 16px;
+      color: white;
+    }
+    .16{
+        width: 50px;
+        height: 50px;
+    }
 </style>
 </head>
 <body id="body">
@@ -311,7 +364,7 @@ label{
 
 <div id="myModal" class="modal">
     <div class="modal-content">
-        <span class="close" id="closeModalBtn">&times;</span>
+        <span class="close" id="closeModalBtn">x</span>
         <button class="red"id="testBtn1">Youtube</button>
         <button class="purple"id="testBtn2">Discord</button>
     </div>
@@ -341,11 +394,49 @@ label{
     <button class="btn red" id="play">Red</button>
     <li></li>
     <button class="btn purple" id="play">Purple</button>
+    <li></li>
+    <button class="btn gray" id="play">Gray</button>
     </div>
     <h1>Toggles</h1>
     <div class="toggles">
     <input id="toggle" class="toggle" type="checkbox"/>
     <label for="toggle"></label>
+    <h1>Dropdowns</h1>
+    <div class="dropdowns">
+        <div class="dropdown">
+  <button onclick="toggleDropdown()" class="btn gray">Selecione uma opção</button>
+  <div id="myDropdown" class="dropdown-content">
+    <a href="#" onclick="selectOption('Opção 1')" class="btn green">Opção 1</a>
+    <li></li>
+    <a href="#" onclick="selectOption('Opção 2')" class="btn gray">Opção 2</a>
+    <li></li>
+    <a href="#" onclick="selectOption('Opção 3')" class="btn gray">Opção 3</a>
+  </div>
+  <p id="selectedOption">Opção selecionada: Nenhuma</p>
+  <h1>Quiz</h1>
+<div class="quiz">
+  <div class="question">
+    Texto do Quiz?
+  </div>
+
+  <div class="options">
+    <button onclick="checkAnswer(this)" class="btn gray">Teste1</button>
+    <button onclick="checkAnswer(this)" class="btn gray">Teste2</button>
+    <button onclick="checkAnswer(this)" class="btn gray">Teste3</button>
+    <button onclick="checkAnswer(this)" class="btn gray">Teste4</button>
+    <button onclick="checkAnswer(this)" class="btn gray">Teste5</button>
+  </div>
+
+  <div id="result"></div>
+
+  <button id="restartButton" onclick="restartQuiz()" class="gray"><img class="16" src="re.png" alt="re" /></button>
+</div>
+
+</div>
+
+
+
+    </div>
     <h1>Sliders</h1>
     <div class="sliders">
 <div class="slider-container"> <input type="range" id="slider" min="0" max="100" value="50"> <p id="slider-value">50</p> 
@@ -419,6 +510,63 @@ window.onclick = function(event) {
     }
 };
 
+  function toggleDropdown() {
+    var dropdown = document.getElementById("myDropdown");
+    dropdown.classList.toggle("show");
+  }
+
+  function selectOption(option) {
+    document.getElementById("selectedOption").textContent = "Opção selecionada: " + option;
+    toggleDropdown();
+  }
+
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropdown button')) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      for (var i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+    var correctOption = "Teste3";
+
+  function checkAnswer(button) {
+    var selectedOption = button.textContent;
+    var resultDiv = document.getElementById("result");
+
+    if (selectedOption === correctOption) {
+      button.classList.remove("gray");
+      button.classList.add("green");
+      resultDiv.textContent = "Correto! " + selectedOption + "é a Resposta Certa";
+    } else {
+      button.classList.remove("gray");
+      button.classList.add("red");
+      resultDiv.textContent = "Incorreto! " + selectedOption + "A Resposta e " + correctOption;
+    }
+
+    disableButtons();
+  }
+
+  function disableButtons() {
+    var buttons = document.querySelectorAll('.options button');
+    buttons.forEach(function(button) {
+      button.disabled = true;
+    });
+  }
+
+  function restartQuiz() {
+    var buttons = document.querySelectorAll('.options button');
+    buttons.forEach(function(button) {
+      button.classList.remove("green", "red");
+      button.classList.add("gray");
+      button.disabled = false;
+    });
+
+    document.getElementById("result").textContent = "";
+  }
     </script>
 </body>
 </html>
