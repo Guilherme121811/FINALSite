@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title></title>
+    </head>
+    <body>
+    <div class="tab-container">
+        <div class="tab-label gray" onclick="openTab('tab1')">Home</div>
+        <li></li>
+        <div class="tab-label gray" onclick="openTab('tab2')">Galery</div>
+        <li></li>
+        <div class="tab-label gray" onclick="openTab('tab3')">Ore-Ui</div>
+        <li></li>
+        <div class="tab-label gray" onclick="openTab('tab4')">Options</div>
+    </div>
+    <li></li>
+        <div class="all tab" id="tab1">
+                            <label class="tab-name" id="tab1">Home</label>
+            <div class="blackdialog">
+            Essa nova Ui e Experimental então pode ocorrer bugs!
+            </div>
+                            <l style="color: black;">________________</l>
+                        <li></li>
+            <img src="img.png" alt="img" class="thumb"/>
+            <p class="mod-name">Miraculer-Addon</p>
+            <button class="green" id="download">Download</button>
+        </div>
+        <div class="all tab" id="tab2">
+                            <label class="tab-name" id="tab2">Galery</label>
+                            <l style="color: black;">________________</l>
+                            <li></li>
+                            <div class="content">
+                            <img class="poster" src="poster.png" />
+                            <h1 class="poster-title">Creation</h1>
+                            <h3 class="gold">Demo V1.2.0</h3>
+                            </div>
+
+        </div>
+        <div class="all tab" id="tab3">
+                            <label class="tab-name" id="tab3">Ore-Ui</label>
+                            <l style="color: black;">________________</l>
+                            <li></li>
+    <button class="btn green" id="play">Green</button>
+    <li></li>
+    <button class="btn white" id="play">Normal</button>
+    <li></li>
+    <button class="btn red" id="play">Red</button>
+    <li></li>
+    <button class="btn purple" id="play">Purple</button>
+    <li></li>
+    <button class="btn gray" id="play">Gray</button>
+    </div>
+        </div>
+        <div class="all tab" id="tab4">
+                            <label class="tab-name" id="tab4">Options</label>
+                            <l style="color: black;">________________</l>
+                            <li></li>
+                            <button class="green" id="openModalBtn">Informations</button>
+                            <button class="white" id="testBtn4">Voltar a Antiga Ui</button>
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModalBtn">x</span>
+        <button class="red"id="testBtn1">Youtube</button>
+        <button class="purple"id="testBtn2">Discord</button>
+    </div>
+</div>
+        </div>
+
+    </body>
+</html>
+<script type="text/javascript" charset="utf-8">
+        // Função para alternar entre as abas
+        function openTab(tabName) {
+            var tabs = document.getElementsByClassName("tab");
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].style.display = "none";
+             }
+            document.getElementById(tabName).style.display = "block";
+        }
+        // Exibir a primeira aba por padrão
+        openTab("tab1");
+var modal = document.getElementById('myModal');
+var openBtn = document.getElementById('openModalBtn');
+var closeBtn = document.getElementById('closeModalBtn');
+var testBtn1 = document.getElementById('testBtn1');
+var testBtn2 = document.getElementById('testBtn2');
+var testBtn3 = document.getElementById('download');
+var testBtn4 = document.getElementById('testBtn4')
+// Função para abrir o modal
+openBtn.onclick = function() {
+    modal.style.display = 'block';
+};
+
+// Função para fechar o modal
+closeBtn.onclick = function() {
+    modal.style.display = 'none';
+};
+
+// Funções de teste
+testBtn1.onclick = function() {
+    // Redirecionar para o Google ao clicar em "Teste 1"
+    window.location.href = 'https://youtube.com/@Miracle-Addon?si=L0muGwkAqYrv_FNs';
+};
+
+testBtn2.onclick = function() {
+    // Redirecionar para o Google ao clicar em "Teste 2"
+    window.location.href = 'https://discord.com/invite/Xy6Ej7Dkrg';
+};
+testBtn3.onclick = function() {
+    window.location.href = 'https://www.mediafire.com/file/7i10hh4g4wy717f/Miracler-Addon_%25C2%25A7bEvolu%25C3%25A7%25C3%25A3o_1699116444172.mcaddon/file'
+}
+testBtn4.onclick = function() {
+    window.location.href = 'index.html'
+}
+
+// Fechar o modal se clicar fora da área do conteúdo
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+};
+</script>
+<style type="text/css" media="all">
+.poster{
+    width: 474px;
+    height: 476px;
+}
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #616161;
+    margin: 15% auto;
+    padding: 20px;
+    border: 2px solid #9E9E9E;
+    width: 80%;
+    box-shadow: 0px 6px 0px 0px #212121;
+}
+.content {
+    background-color: #616161;
+    border: 2px solid #9E9E9E;
+    margin: 5px;
+    box-shadow: 0px 6px 0px 0px #212121;
+}
+.poster-title{
+    font-family: "MinecraftTen";
+    color: red;
+    text-shadow: 0px 2px 2px darkred;
+}
+.gold{
+    color: gold;
+    font-family: "MinecraftTen";
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: "Mojangles";
+    top: 3px;
+    right: 3px;
+}
+
+.close:hover {
+    color: black;
+}
+.mod-name{
+    font-family: "MinecraftTen";
+    color: #BBDEFB;
+    font-size: 30px;
+}
+.thumb{
+    width: 488px;
+    height: 485px;
+}
+.tab-name{
+    font-family: "MinecraftTen";
+    font-size:39px;
+}
+        /* Estilo para o contêiner das abas */
+        .tab-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        /* Estilo para as abas */
+        .tab {
+        align-items: column;
+        place-content: center;
+        background: rgba( 0, 0, 0, 0.64);
+        backdrop-filter: blur(7px);
+        height: calc(100% - 50px);
+        width: 50vh;
+        border: 3px solid #BBDEFB;
+        }
+        .tab-label {
+            width: 100px;
+            height: 50px;
+            cursor: pointer;
+            font-family: "Mojangles";
+        }
+        /* Estilo para o conteúdo das abas */
+        .tab-content {
+            display: none;
+            text-align: center;
+        }
+        /* Estilo para os botões */
+        .btn{
+            text-decoration: none;
+            margin-right: 10px;
+            width: 150px;
+            height: 50px;
+        }
+    .blackdialog{
+       top: 50px;
+       background:rgba( 255, 255, 255, 0.72);
+       border: none;
+       width: 100%;
+       height: 50px;
+       display: block;
+       place-items: center;
+       align-content: column;
+       place-content: center;
+       color: #010101;
+    }
+    button{
+        font-family: "Mojangles";
+    }
+    .green{
+    color: #fff;
+    background: #8BC34A;
+    box-shadow: 0px 6px 0px 0px #689F38;
+    border: 2px solid #AED581;
+}
+.green:active{
+    position: relative;
+    top: 6px;
+    box-shadow: none;
+}
+.white{
+    color: #000;
+    background: #EEEEEE;
+    box-shadow: 0px 6px 0px 0px #BDBDBD;
+    border: 2px solid #FAFAFA;
+}
+.white:active{
+    position: relative;
+    top: 6px;
+    box-shadow: none;
+}
+.red{
+    color: #ffffff;
+    background: #F44336;
+    box-shadow: 0px 6px 0px 0px #D32F2F;
+    border: 2px solid #E57373;
+}
+.red:active{
+    position: relative;
+    top: 6px;
+    box-shadow: none;
+}
+.purple{
+    color: #ffffff;
+    background: #673AB7;
+    box-shadow: 0px 6px 0px 0px #512DA8;
+    border: 2px solid #9575CD;
+}
+.purple:active{
+    position: relative;
+    top: 6px;
+    box-shadow: none;
+}
+.gray{
+    color: #ffffff;
+    background: #616161;
+    box-shadow: 0px 6px 0px 0px #212121;
+    border: 2px solid #9E9E9E;
+}
+.gray:active{
+    position: relative;
+    top: 6px;
+    box-shadow: none;
+}
+@font-face {
+    font-family: "MinecraftTen";
+    src: url("Minecraft-Normal.ttf");
+}
+@font-face {
+    font-family: "MinecraftBold";
+    src: url("Minecraft-Bold.otf");
+}
+@font-face {
+    font-family: "Mojangles";
+    src: url("Minecraft-Regular.otf");
+}
+    body{
+                align-items: center;
+        place-content: center;
+            color: #fff;
+            font-family: "Mojangles";
+            background: linear-gradient(to bottom, #151515, #050505);;
+            width: 25vh;
+            height: 75vh;
+            margin: none;
+            padding: none;
+    }
+    .all{
+        align-items: column;
+        place-content: center;
+        background: rgba( 0, 0, 0, 0.64);
+        backdrop-filter: blur(13px);
+        height: calc(100% - 50px);
+        width: 50vh;
+    }
+    .None{
+        color: #E0E0E0;
+        font-family: "Mojangles";
+        font-size: 29px;
+    }
+</style>

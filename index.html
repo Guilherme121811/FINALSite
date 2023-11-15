@@ -113,7 +113,7 @@
         }
         body{
             color: #fff;
-            font-family: Arial;
+            font-family: "Mojangles";
             background: linear-gradient(to bottom, #673AB7, #BBDEFB);;
             width: 50vh;
             height: 100vh;
@@ -381,6 +381,8 @@ width: 50px;
 </div>
 
     <div class="tab" id="tab6">
+
+                <button class="gray" id="testBtn3">Experimente a Nova Ui</button>
     </div>
 
 <div class="tab" id="tab4">
@@ -451,7 +453,7 @@ width: 50px;
             var tabs = document.getElementsByClassName("tab");
             for (var i = 0; i < tabs.length; i++) {
                 tabs[i].style.display = "none";
-            }
+             }
             document.getElementById(tabName).style.display = "block";
         }
 
@@ -481,7 +483,7 @@ var openBtn = document.getElementById('openModalBtn');
 var closeBtn = document.getElementById('closeModalBtn');
 var testBtn1 = document.getElementById('testBtn1');
 var testBtn2 = document.getElementById('testBtn2');
-
+var testBtn3 = document.getElementById('testBtn3')
 // Função para abrir o modal
 openBtn.onclick = function() {
     modal.style.display = 'block';
@@ -502,6 +504,9 @@ testBtn2.onclick = function() {
     // Redirecionar para o Google ao clicar em "Teste 2"
     window.location.href = 'https://discord.com/invite/Xy6Ej7Dkrg';
 };
+testBtn3.onclick = function() {
+    window.location.href = 'test.html'
+}
 
 // Fechar o modal se clicar fora da área do conteúdo
 window.onclick = function(event) {
@@ -568,5 +573,6 @@ window.onclick = function(event) {
     document.getElementById("result").textContent = "";
   }
     </script>
+    <script src="main.ts"></script>
 </body>
 </html>
